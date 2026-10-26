@@ -1,0 +1,1 @@
+Dockerfile a elaborar após escolha da aplicação, versão e build. Nenhuma imagem ou aplicação foi produzida nesta preparação.

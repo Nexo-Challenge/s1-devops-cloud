@@ -1,0 +1,1 @@
+Script .sh a implementar somente após confirmar assinatura, região, recursos, custos e autorização de provisionamento e limpeza. Nunca excluir grupo existente sem autorização específica. Não há script executável nesta preparação.

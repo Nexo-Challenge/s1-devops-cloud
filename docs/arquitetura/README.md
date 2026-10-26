@@ -1,0 +1,1 @@
+Adicionar diagrama consistente com os recursos realmente utilizados, com ícones e identificação dos serviços Azure.

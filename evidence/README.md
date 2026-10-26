@@ -1,0 +1,1 @@
+Registrar provisionamento via CLI, aplicação/container na VM, testes e exclusão dos recursos. Redigir evidências sem tokens, chaves ou outros dados sensíveis.
