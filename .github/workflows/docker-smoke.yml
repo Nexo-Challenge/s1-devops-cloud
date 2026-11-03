@@ -1,0 +1,28 @@
+name: Docker - build e teste HTTP
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sintaxe Bash
+        run: find scripts azure -name '*.sh' -exec bash -n {} \;
+      - name: Construir imagem da API
+        run: bash scripts/build-image.sh
+      - name: Iniciar demonstração H2
+        run: bash scripts/run-container.sh demo
+      - name: Verificar HTTP e CRUD
+        run: |
+          bash scripts/verify.sh
+          python3 scripts/smoke-crud.py
+      - name: Logs do container
+        if: always()
+        run: docker logs --tail 100 nexo-api || true
+      - name: Encerrar container de teste
+        if: always()
+        run: docker rm -f nexo-api || true
