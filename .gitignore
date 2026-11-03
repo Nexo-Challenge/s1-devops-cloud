@@ -22,3 +22,9 @@ node_modules/
 # Arquivos temporários
 *.log
 *.tmp
+.work/
+docker/oracle.env
+__pycache__/
+
+# Backup privado das evidências Azure; não publicar automaticamente
+evidence/private/
