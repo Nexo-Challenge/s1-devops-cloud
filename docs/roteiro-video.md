@@ -1,5 +1,11 @@
 # Roteiro do vídeo
 
+**Vídeo publicado:** https://www.youtube.com/watch?v=YWLDkvy1bto
+
+O material abaixo foi usado como guia de gravação. O vídeo final tem 4 minutos.
+A exclusão definitiva foi concluída depois da gravação; o [comprovante está aqui](../evidence/README.md#exclusão-dos-recursos).
+A VM foi removida e os comandos de criação só devem ser repetidos para uma nova implantação.
+
 Duração: cerca de 3 minutos. Grave em pelo menos 720p, com o terminal legível
 e áudio ou legendas. As falas abaixo são uma sugestão; explique com suas palavras.
 

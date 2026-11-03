@@ -1,34 +1,32 @@
-# Checklist — Sprint 1
+# Conferência da entrega — Sprint 1
 
-DevOps Tools & Cloud Computing, conforme o PDF
-`2TDS Agosto - Marinha 2026 - 1º Semestre V2.pdf`, seção DevOps 01–05.
+DevOps Tools & Cloud Computing, conforme a seção DevOps 01–05 do PDF
+`2TDS Agosto - Marinha 2026 - 1º Semestre V2.pdf`.
 
-## Parte técnica
+| Item | Onde conferir |
+| --- | --- |
+| Arquitetura com ícones, serviços e comunicação | [Diagrama e explicação](arquitetura/README.md) |
+| Dockerfile e construção da imagem | [Dockerfile](../docker/Dockerfile), [build](../scripts/build-image.sh) e [instruções](../docker/README.md) |
+| Container executando na VM Azure | [Vídeo](https://www.youtube.com/watch?v=YWLDkvy1bto) e [validação](validacao.md) |
+| Provisionamento por Azure CLI | [provision.sh](../azure/provision.sh) e [comandos](../azure/README.md) |
+| Scripts de implantação e teste | [Azure](../azure/) e [scripts](../scripts/) |
+| Nomes, RMs, turma e explicação Docker/Cloud | [README principal](../README.md) |
+| Exclusão dos recursos após a demonstração | [Comprovante do portal Azure](../evidence/README.md#exclusão-dos-recursos) |
+| Vídeo publicado, 720p, com áudio | [YouTube](https://www.youtube.com/watch?v=YWLDkvy1bto) |
+| PDF com integrantes, RMs, turma e links | [PDF final](../delivery/NEXO-DevOps-Entrega-Final.pdf) |
 
-- [x] Diagrama com ícones, nomes dos serviços e comunicação entre API, Docker, VM e banco.
-- [x] Dockerfile, imagem construída e container funcionando.
-- [x] VM criada por Azure CLI e API executada no container dentro da Azure.
-- [x] Scripts `.sh` e comandos para reproduzir a implantação.
-- [x] Arquivos publicados em branch pública, com Dockerfile, arquitetura e instruções.
-- [x] README com integrantes, RMs e explicação do uso de Docker e Cloud na solução.
+O código e a documentação estão na `main`. A implantação foi criada por CLI;
+a exclusão definitiva foi concluída pelo portal Azure em 03/11/2026.
 
-A API Java foi reutilizada do repositório do grupo. Os resultados dos testes estão
-em [validacao.md](validacao.md), e a publicação está no
-[PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2), aberto para revisão.
+## Observações sobre a demonstração
 
-## Para concluir a entrega
+O vídeo publicado tem 4 minutos; o enunciado pede aproximadamente 3 minutos.
+A tentativa final de limpeza no vídeo foi cancelada por erro de confirmação.
+O comprovante da exclusão posterior está no repositório e no PDF.
 
-- [ ] Gravar as evidências de criação por CLI, build e execução do container na VM.
-- [ ] Excluir o grupo após a gravação e guardar a confirmação de exclusão.
-- [ ] Publicar vídeo de aproximadamente 3 minutos, mínimo 720p, com áudio explicativo ou legendas, como não listado no YouTube.
-- [ ] Gerar PDF com nomes, RMs, turma e links do GitHub e do vídeo.
-- [ ] Conferir se os links mostram os arquivos completos e abrem para o professor.
+O `localhost` dos testes pertence à VM Azure. A API estava hospedada na nuvem,
+sem portas HTTP ou SSH abertas para a internet. O banco usado foi H2 em memória,
+com dados fictícios; a integração Oracle não foi testada.
 
-O `localhost` dos testes pertence à VM Azure; uma execução apenas no computador
-local não atende ao requisito de hospedagem na nuvem.
-
-## Prazo no documento
-
-O PDF traz 01/11/2026 na seção Entregas e até 02/11/2026 no Cronograma.
-Confirme o horário e a data no portal ou com o professor. O PDF original não está
-versionado neste repositório.
+Esta conferência indica onde estão os itens e evidências, sem substituir a
+avaliação do professor. O envio do PDF no portal da disciplina deve ser feito pelo grupo.

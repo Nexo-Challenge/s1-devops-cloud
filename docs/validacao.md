@@ -48,18 +48,31 @@ Após reiniciar o container, os testes HTTP e CRUD passaram novamente, com o mar
 inicialização mesmo quando a conexão é reiniciada antes de o servidor ficar pronto.
 
 Também passou o build e teste HTTP/CRUD no GitHub Actions:
-[execução 41564440786](https://github.com/Nexo-Challenge/s1-devops-cloud/actions/runs/41564440786).
+[execução 41567058770](https://github.com/Nexo-Challenge/s1-devops-cloud/actions/runs/41567058770).
 
-## Ambiente e próximos passos
+## Encerramento do ambiente — 03/11/2026
 
 O desligamento automático foi configurado para **03:00 UTC**, equivalente a
 **00h de 03/11/2026 em São Paulo**. O horário se repete diariamente e não exclui
 disco nem IP.
 
-Oracle não foi acessado. A demonstração usa H2 temporário. Ainda faltam o vídeo,
-o PDF com os links e a exclusão do grupo após guardar as evidências.
-Os arquivos estão no [PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2),
-aberto para revisão; a implantação foi feita por pacote local.
+Em 03/11, a VM foi iniciada novamente para gravar a demonstração. A verificação
+mostrou `VM running`, container em execução, HTTP 200 nos quatro endpoints e
+`NEXO_VERIFY_OK`. O teste CRUD também passou durante a gravação.
+
+Após a gravação, o grupo `rg-nexo-sprint1` foi excluído pelo portal Azure. O portal
+confirmou a exclusão e a busca pelo nome retornou zero resultados. O comprovante
+está em [evidências](../evidence/README.md#exclusão-dos-recursos). A VM não está mais
+em execução e o agendamento acima também foi removido junto com o grupo.
+
+O [vídeo](https://www.youtube.com/watch?v=YWLDkvy1bto) e o
+[PDF final](../delivery/NEXO-DevOps-Entrega-Final.pdf) estão disponíveis. O código
+foi integrado à `main` pelo [PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2).
+A implantação original foi feita por pacote local, com os scripts do repositório.
+
+Oracle não foi acessado. A demonstração usa H2 temporário; os dados são recriados
+a cada reinício. A execução do Actions valida Docker e HTTP/CRUD, mas não provisiona
+nem implanta recursos Azure.
 
 ## Onde ficaram as evidências
 
