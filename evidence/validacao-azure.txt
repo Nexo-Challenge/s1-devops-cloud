@@ -1,0 +1,32 @@
+NEXO - RESULTADO OBSERVADO NA AZURE
+02/11/2026, horário de São Paulo
+
+Grupo: rg-nexo-sprint1
+VM: vm-nexo-sprint1
+Região: eastus
+Tamanho: Standard_D2s_v4
+Estado: VM running
+
+Container: nexo-api
+Imagem: nexo-api:sprint1
+Comando: java -jar app.jar
+Usuário: 10001:10001
+Porta: 127.0.0.1:8080 da VM Azure
+Imagem ID: sha256:c48834a2740b7e88d0579f27ced987ff721fb90ef770abda2beed859bd862244
+
+HTTP 200 /swagger-ui/index.html
+HTTP 200 /api/aplicacoes
+HTTP 200 /api/areas
+HTTP 200 /v3/api-docs
+CRUD demo: POST 201, GET 200, PUT 200, validação 400, DELETE 204, ausente 404
+Partida a frio: NEXO_COLD_START_OK
+
+Modo: demo H2, dados fictícios. Oracle não acessado.
+O teste foi executado dentro da VM por Azure VM Agent / Run Command.
+
+Desligamento automático habilitado às 03:00 UTC / 00:00 São Paulo.
+Esse desligamento não exclui disco nem IP.
+Grupo ainda NÃO excluído: aguarda gravação do vídeo e confirmação da limpeza.
+
+Este arquivo é um resumo da saída conferida no terminal, não um log bruto.
+Os logs brutos foram gerados no Cloud Shell. O download deles pela interface falhou.
