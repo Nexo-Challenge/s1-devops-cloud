@@ -1,11 +1,10 @@
-# Evidências reais
-Guardar após executar, sem segredos:
-1. Saída do provisionamento por CLI e VM com estado running.
-2. Construção da imagem e ID/digest.
-3. docker ps mostrando a API dentro da VM.
-4. verify-vm.sh com endpoints HTTP 200 e JSON de demonstração.
-5. Exclusão do grupo e az group exists retornando false.
-6. Link do workflow, se o teste Docker da proposta tiver executado.
+# Entrega
+Depois da execução, preencher o PDF final com:
+- Nome: Erick Ramos Santos; RM: 567837; turma: 2TDSPS (conferir cadastro).
+- Identificação dos demais integrantes conforme orientação da disciplina.
+- GitHub: https://github.com/Nexo-Challenge/s1-devops-cloud
+- YouTube não listado: preencher após gravar e publicar o vídeo.
 
-Não marcar como concluído sem o resultado. Vídeo aproximado de 3 minutos, 720p mínimo,
-não listado no YouTube, com áudio explicativo ou legendas.
+O roteiro está em docs/roteiro-video.md. O PDF final precisa dos links reais e acessíveis;
+este arquivo não é o PDF final. A infraestrutura e as evidências devem ser verificadas
+antes de declarar a entrega concluída.
