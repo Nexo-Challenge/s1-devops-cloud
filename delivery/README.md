@@ -1,9 +1,14 @@
-# Entrega
-Depois da execução, preencher o PDF final com:
-- Turma: 2TDSPS.
-- Integrantes: usar a identificação abaixo, conferida nos READMEs de banco de dados e mobile da organização Nexo-Challenge.
-- GitHub: https://github.com/Nexo-Challenge/s1-devops-cloud
-- YouTube não listado: preencher após gravar e publicar o vídeo.
+# Entrega final
+
+A parte técnica está publicada. Para concluir a entrega da Sprint 1:
+
+1. Grave a demonstração seguindo o [roteiro](../docs/roteiro-video.md). Depois de salvar as outras evidências, registre também a exclusão dos recursos da Azure.
+2. Edite o vídeo para cerca de 3 minutos e publique como não listado no YouTube.
+3. Gere o PDF com a turma, os integrantes e os links do código e do vídeo.
+
+## Dados para o PDF
+
+**Turma: 2TDSPS**
 
 | Integrante | RM |
 | --- | --- |
@@ -13,9 +18,15 @@ Depois da execução, preencher o PDF final com:
 | Eduardo Boni dos Santos | 567236 |
 | Marcos Vinicius de Jesus Almeida | 567214 |
 
-Fontes: [banco de dados](https://github.com/Nexo-Challenge/s1-database#equipe-e-responsabilidade)
-e [mobile](https://github.com/Nexo-Challenge/s1-mobile-flutter#equipe-e-responsabilidade).
+- GitHub: https://github.com/Nexo-Challenge/s1-devops-cloud
+- Vídeo: preencher com o link do YouTube após a publicação.
 
-O roteiro está em docs/roteiro-video.md. O PDF final precisa dos links reais e acessíveis;
-este arquivo não é o PDF final. A infraestrutura e as evidências devem ser verificadas
-antes de declarar a entrega concluída.
+Enquanto o [PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2) estiver
+aberto, os arquivos completos estão na
+[branch da entrega](https://github.com/Nexo-Challenge/s1-devops-cloud/tree/feat/devops-docker-azure).
+Antes de enviar o PDF, confira se o link escolhido mostra o Dockerfile, os scripts
+e a documentação, e teste os dois links sem depender da sua conta.
+
+Os nomes e RMs foram conferidos nos READMEs de
+[banco de dados](https://github.com/Nexo-Challenge/s1-database#equipe-e-responsabilidade)
+e [mobile](https://github.com/Nexo-Challenge/s1-mobile-flutter#equipe-e-responsabilidade).
