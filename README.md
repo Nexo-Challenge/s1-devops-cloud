@@ -42,15 +42,15 @@ Scripts de infraestrutura versionados neste repositório. Imagens base:
 Registrar IDs e digests reais nas evidências. O build Docker usa `-DskipTests`;
 a suíte Java e o teste HTTP/CRUD têm evidências separadas.
 
-## Equipe
+## Equipe e responsabilidade
 
-| Integrante | RM | Responsabilidade |
-| --- | --- | --- |
-| Alisson Kawan Evangelista Silva | 567598 | Java e .NET |
-| Kenji Fernandes Wakabayashi | 568156 | IoT e Banco de Dados |
-| Erick Ramos Santos | 567837 | DevOps |
-| Eduardo Boni dos Santos | 567236 | Mobile |
-| Marcos Vinicius de Jesus Almeida | 567214 | Documentação e QA |
+| Nome Completo | RM | Turma | Responsabilidade Principal |
+| :--- | :--- | :--- | :--- |
+| **Alisson Kawan Evangelista Silva** | **RM567598** | 2TDSPS | Java e .NET |
+| **Kenji Fernandes Wakabayashi** | **RM568156** | 2TDSPS | IoT e Banco de Dados |
+| **Erick Ramos Santos** | **RM567837** | 2TDSPS | DevOps Tools & Cloud Computing (Responsável Principal) |
+| **Eduardo Boni dos Santos** | **RM567236** | 2TDSPS | Mobile Application Development |
+| **Marcos Vinicius de Jesus Almeida** | **RM567214** | 2TDSPS | Documentação e Qualidade de Software (QA) |
 
 Turma: **2TDSPS**. Nomes completos, RMs e turma conferidos nos READMEs de
 [banco de dados](https://github.com/Nexo-Challenge/s1-database#equipe-e-responsabilidade)
