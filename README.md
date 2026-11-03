@@ -1,77 +1,68 @@
-# NEXO - Docker e VM Azure
+# NEXO — DevOps
 
-Entrega de DevOps Tools & Cloud Computing - Sprint 1, FIAP / Challenge AMAZUL.
+Sprint 1 de DevOps Tools & Cloud Computing, FIAP / Challenge AMAZUL.
 
-A API Java é empacotada em uma imagem Docker e executada em uma VM Ubuntu na Azure.
-O modo demo usa H2 temporário com dados fictícios. O perfil Oracle continua disponível
-para integração posterior com o banco do grupo.
+Esta parte do NEXO coloca a API Java do grupo em um container Docker dentro de uma
+VM Ubuntu na Azure. A demonstração usa H2 em memória, com dados fictícios.
+A integração com Oracle fica para uma próxima etapa.
 
-**Estado:** imagem Docker construída e API executada e testada em uma VM Azure real.
-A API Java teve 61 testes aprovados previamente. A verificação remota passou em HTTP e CRUD,
-inclusive após reiniciar o container. Ver [resultados e pendências](docs/validacao.md).
+## O que está funcionando
 
-## Começar
+- Imagem Docker construída e container executado na VM Azure.
+- Swagger e endpoints da API respondendo normalmente.
+- Cadastro, consulta, atualização, validação e exclusão testados, inclusive após reiniciar o container.
+- Build Docker e testes HTTP/CRUD aprovados no GitHub Actions.
 
-- [Docker local](docker/README.md): construir a imagem, iniciar e testar a API.
-- [Azure por CLI](azure/README.md): criar a VM, implantar e verificar o container remoto.
-- [Arquitetura](docs/arquitetura/README.md): fluxo e diagrama com ícones.
+Os resultados estão em [validação](docs/validacao.md). Os arquivos foram publicados
+no [PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2), aberto para revisão.
+Ainda faltam o vídeo, o PDF final e a exclusão dos recursos após a gravação.
 
-![Arquitetura NEXO na Azure](docs/arquitetura/arquitetura.svg)
+## Como rodar
 
-- [Roteiro do vídeo](docs/roteiro-video.md): aproximadamente 3 minutos.
-- [Evidências](evidence/README.md) e [entrega final](delivery/README.md).
+| O que você precisa | Onde encontrar |
+| --- | --- |
+| Rodar no computador com Docker | [Passo a passo Docker](docker/README.md) |
+| Criar e testar a VM | [Passo a passo Azure](azure/README.md) |
+| Entender a estrutura | [Arquitetura](docs/arquitetura/README.md) |
+| Gravar e entregar | [Roteiro do vídeo](docs/roteiro-video.md) e [entrega](delivery/README.md) |
+| Conferir os itens da disciplina | [Checklist da Sprint 1](docs/requisitos-sprint-1.md) |
 
-## Como Docker e Cloud Computing podem ser utilizados na solução?
+![Arquitetura do NEXO na Azure](docs/arquitetura/arquitetura.svg)
 
-Docker reúne a API Java, seu runtime e sua configuração de execução em uma imagem,
-reduzindo diferenças entre máquinas. O build em múltiplas etapas usa Maven/JDK para
-gerar o JAR e um JRE para executá-lo. O processo roda com usuário sem privilégios.
+## Por que Docker e Azure?
 
-Cloud Computing fornece a VM e a rede remotas para hospedar o container. Azure CLI
-permite repetir o provisionamento por script e registrar os comandos usados. A API
-pode atender o aplicativo do NEXO quando sua integração estiver implementada.
-Nesta demonstração, os testes são executados dentro da VM via Azure VM Agent;
-o endereço 127.0.0.1 pertence à VM, e a aplicação não fica exposta à internet.
+O Docker reúne a API, o Java e as configurações em uma imagem que pode ser executada
+em outras máquinas. O Dockerfile usa Maven para gerar o JAR e uma segunda etapa,
+com JRE, para rodar a aplicação com um usuário sem privilégios de administrador.
 
-## Reprodutibilidade
+A Azure fornece a VM, o disco e a rede para hospedar esse container. Os scripts
+usam Azure CLI para criar e administrar o ambiente. Nesta demonstração, os testes
+rodam dentro da VM por Run Command: o endereço `127.0.0.1:8080` é da VM, e a API
+não está aberta para acesso pela internet.
 
-Fonte Java fixada em `b277672b3ed25ac2bd2970fbd6824dc3d38bae86` do
-[s1-java-api](https://github.com/Nexo-Challenge/s1-java-api).
-Scripts de infraestrutura versionados neste repositório. Imagens base:
-`maven:3.9.11-eclipse-temurin-21` e `eclipse-temurin:21-jre-jammy`.
-Registrar IDs e digests reais nas evidências. O build Docker usa `-DskipTests`;
-a suíte Java e o teste HTTP/CRUD têm evidências separadas.
+## Equipe
 
-## Equipe e responsabilidade
+Turma **2TDSPS**.
 
-| Nome Completo | RM | Turma | Responsabilidade Principal |
-| :--- | :--- | :--- | :--- |
-| **Alisson Kawan Evangelista Silva** | **RM567598** | 2TDSPS | Java e .NET |
-| **Kenji Fernandes Wakabayashi** | **RM568156** | 2TDSPS | IoT e Banco de Dados |
-| **Erick Ramos Santos** | **RM567837** | 2TDSPS | DevOps Tools & Cloud Computing (Responsável Principal) |
-| **Eduardo Boni dos Santos** | **RM567236** | 2TDSPS | Mobile Application Development |
-| **Marcos Vinicius de Jesus Almeida** | **RM567214** | 2TDSPS | Documentação e Qualidade de Software (QA) |
+| Integrante | RM | Responsabilidade |
+| --- | --- | --- |
+| Alisson Kawan Evangelista Silva | 567598 | Java e .NET |
+| Kenji Fernandes Wakabayashi | 568156 | IoT e Banco de Dados |
+| Erick Ramos Santos | 567837 | DevOps Tools & Cloud Computing |
+| Eduardo Boni dos Santos | 567236 | Mobile Application Development |
+| Marcos Vinicius de Jesus Almeida | 567214 | Documentação e Qualidade de Software |
 
-Turma: **2TDSPS**. Nomes completos, RMs e turma conferidos nos READMEs de
+Nomes e RMs conferidos nos repositórios de
 [banco de dados](https://github.com/Nexo-Challenge/s1-database#equipe-e-responsabilidade)
 e [mobile](https://github.com/Nexo-Challenge/s1-mobile-flutter#equipe-e-responsabilidade).
 
-## Fonte e prazo
-Fonte: `2TDS Agosto - Marinha 2026 - 1º Semestre V2.pdf`, seção **DevOps Tools & Cloud Computing 01–05**, fornecido pelo grupo. O PDF original não foi republicado.
+## Sobre esta versão
 
-O documento diverge: seção Entregas indica **01/11/2026**, Cronograma indica **até 02/11/2026**. Confirmar data e horário no portal/professor; nenhuma das datas foi validada como definitiva. Documentar eventuais instruções atualizadas do portal.
+A API vem do [s1-java-api](https://github.com/Nexo-Challenge/s1-java-api), no commit
+`b277672b3ed25ac2bd2970fbd6824dc3d38bae86`, sem mudanças no código Java.
+O build usa Java 21 e Maven 3.9.11. As versões e os resultados completos estão na
+[validação](docs/validacao.md).
 
-## Documentação de referência
-
-- [Requisitos da Sprint 1](docs/requisitos-sprint-1.md).
-- [Criar VM Linux por Azure CLI](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-cli).
-- [Docker Engine no Ubuntu](https://docs.docker.com/engine/install/ubuntu/).
-- [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Cuidados operacionais
-
-A demonstração H2 perde os dados ao reiniciar; ela não comprova integração Oracle.
-A VM, o disco e o IP podem consumir créditos. Guardar as evidências e gravar o vídeo
-antes de executar o script de exclusão. Nenhuma credencial deve entrar no Git.
-VM e container já foram verificados. A entrega ainda depende de GitHub atualizado, vídeo publicado,
-PDF preenchido e evidência da exclusão.
+O banco H2 perde os dados ao reiniciar. A conexão Oracle ainda não foi testada.
+Antes de excluir a infraestrutura, guarde as evidências e grave o vídeo;
+desligar a VM mantém o disco e o IP alocados.

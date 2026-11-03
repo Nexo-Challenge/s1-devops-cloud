@@ -9,5 +9,5 @@
 - DDL/DML, deploy, provisionamento, exclusão, permissões e regras de branches exigem autorização específica.
 - Nunca versionar credenciais, tokens ou dados sensíveis. Usar exemplos sem valores reais.
 - Definition of Ready: escopo, dono, aceite e dependências claros.
-- Definition of Done proposta: revisão, testes pertinentes, evidência e documentação. Nenhum check automatizado foi configurado nesta preparação.
+- Definition of Done proposta: revisão, testes pertinentes, evidência e documentação. O workflow Docker verifica o build e os testes HTTP/CRUD nos pull requests.
 - CODEOWNERS e proteção de branches não foram configurados; serão discutidos após confirmar pessoas, diretórios e política.
