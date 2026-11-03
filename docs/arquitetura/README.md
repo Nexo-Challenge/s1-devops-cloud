@@ -1,21 +1,25 @@
-# Arquitetura da demonstração
-Ver [arquitetura.svg](arquitetura.svg) para a versão visual com ícones.
+# Arquitetura
 
-O usuário executa Azure CLI no Cloud Shell. A CLI provisiona e administra a VM Ubuntu.
-Azure VM Agent executa os scripts dentro da VM por Run Command. O Docker hospeda a API
-Java 21/Spring Boot na porta 8080. O banco H2 vive na memória do mesmo processo Java
-no modo demo, com registros fictícios. Reiniciar o processo descarta os dados.
+![Arquitetura da demonstração](arquitetura.svg)
 
-A API publica 8080 somente no loopback da VM. O NSG não possui regras que liberem
-SSH ou HTTP de entrada. Isso permite demonstrar o container remoto pelo terminal
-sem expor o CRUD sem autenticação à internet. As saídas de verify-vm.sh mostram
-a VM em execução e os testes HTTP realizados dentro dela.
+O Cloud Shell executa a Azure CLI, que cria e administra a VM Ubuntu.
+Dentro da VM, o Docker roda a API Java 21 com Spring Boot. No modo demo,
+o H2 fica na memória do próprio processo Java, com dados fictícios.
 
-Integração Oracle: o mesmo JAR possui perfil oracle configurado por variáveis.
-Não há execução automática de DDL Oracle. A conexão depende de schema, permissões
-CRUD e conectividade com o servidor do grupo. Esse modo precisa de validação própria.
+## Como os testes chegam à API
 
-A imagem usa duas etapas: build Maven/JDK e execução JRE. A versão da fonte da API
-é fixada por SHA em scripts/build-image.sh. As tags das imagens base podem mudar
-com atualizações dos fornecedores; registrar os IDs/digests da imagem construída
-nas evidências para identificar a execução real.
+O Run Command usa o Azure VM Agent para executar os scripts dentro da VM.
+A API atende em `127.0.0.1:8080`, e o NSG não libera entrada HTTP ou SSH.
+Assim, a demonstração acontece no terminal da VM, sem expor o CRUD à internet.
+
+## Imagem e banco
+
+O Dockerfile tem duas etapas: Maven/JDK para compilar e JRE para executar o JAR.
+`scripts/build-image.sh` busca um commit fixo da API. Os IDs da imagem validada
+estão em [validação](../validacao.md), já que as tags das imagens base podem receber atualizações.
+
+O H2 perde os dados ao reiniciar. O perfil Oracle usa variáveis de ambiente e
+depende do schema, das permissões e da conexão com o servidor do grupo.
+Essa integração ainda precisa ser testada; os scripts não criam tabelas Oracle.
+
+Arquivos do diagrama: [SVG](arquitetura.svg) e [PNG](arquitetura.png).
