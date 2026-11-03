@@ -1,39 +1,68 @@
-# s1-devops-cloud
+# NEXO — DevOps
 
-## Finalidade
-**FIAP — Sprint 1 — DevOps Tools & Cloud Computing.** Challenge 2026, tecnologia nuclear / Marinha. Este repositório é um entregável acadêmico; reutilização no produto real deve ser explicitamente acordada.
+Sprint 1 de DevOps Tools & Cloud Computing, FIAP / Challenge AMAZUL.
 
-**Estado: estrutura documental inicial. Não há implementação funcional, testes executados ou entrega concluída.**
+Esta parte do NEXO coloca a API Java do grupo em um container Docker dentro de uma
+VM Ubuntu na Azure. A demonstração usa H2 em memória, com dados fictícios.
+A integração com Oracle fica para uma próxima etapa.
 
-## Fonte e prazo
-Fonte: `2TDS Agosto - Marinha 2026 - 1º Semestre V2.pdf`, seção **DevOps Tools & Cloud Computing 01–05**, fornecido pelo grupo. O PDF original não foi republicado.
+## O que está funcionando
 
-O documento diverge: seção Entregas indica **01/11/2026**, Cronograma indica **até 02/11/2026**. Confirmar data e horário no portal/professor; nenhuma das datas foi validada como definitiva. Documentar eventuais instruções atualizadas do portal.
+- Imagem Docker construída e container executado na VM Azure.
+- Swagger e endpoints da API respondendo normalmente.
+- Cadastro, consulta, atualização, validação e exclusão testados, inclusive após reiniciar o container.
+- Build Docker e testes HTTP/CRUD aprovados no GitHub Actions.
 
-## Equipe e responsabilidade
+Os resultados estão em [validação](docs/validacao.md). Os arquivos foram publicados
+no [PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2), aberto para revisão.
+Ainda faltam o vídeo, o PDF final e a exclusão dos recursos após a gravação.
 
-| Nome Completo | RM | Turma | Responsabilidade Principal |
-| :--- | :--- | :--- | :--- |
-| **Alisson Kawan Evangelista Silva** | **RM567598** | 2TDSPS | Java e .NET |
-| **Kenji Fernandes Wakabayashi** | **RM568156** | 2TDSPS | IoT e Banco de Dados |
-| **Erick Ramos Santos** | **RM567837** | 2TDSPS | DevOps Tools & Cloud Computing (Responsável Principal) |
-| **Eduardo Boni dos Santos** | **RM567236** | 2TDSPS | Mobile Application Development |
-| **Marcos Vinicius de Jesus Almeida** | **RM567214** | 2TDSPS | Documentação e Qualidade de Software (QA) |
+## Como rodar
 
-## Solução e escopo
-Proposta, público-alvo e recorte funcional ainda precisam ser aprovados. Não interpretar exemplos como requisitos adicionais.
+| O que você precisa | Onde encontrar |
+| --- | --- |
+| Rodar no computador com Docker | [Passo a passo Docker](docker/README.md) |
+| Criar e testar a VM | [Passo a passo Azure](azure/README.md) |
+| Entender a estrutura | [Arquitetura](docs/arquitetura/README.md) |
+| Gravar e entregar | [Roteiro do vídeo](docs/roteiro-video.md) e [entrega](delivery/README.md) |
+| Conferir os itens da disciplina | [Checklist da Sprint 1](docs/requisitos-sprint-1.md) |
 
-## Requisitos da disciplina
-Ver [checklist de entrega](docs/requisitos-sprint-1.md).
+![Arquitetura do NEXO na Azure](docs/arquitetura/arquitetura.svg)
 
-## Arquitetura e contratos
-A definir conforme o recorte aprovado. Não foram selecionadas versões, ambientes ou fornecedores adicionais. Registrar acordos entre áreas e vínculos com outros repositórios antes de implementar.
+## Por que Docker e Azure?
 
-## Execução e testes
-Ainda não há aplicação/scripts executáveis nesta preparação. Substituir esta seção por pré-requisitos, versões, comandos reproduzíveis, configuração sem segredos, dados de teste e resultados reais quando a implementação existir.
+O Docker reúne a API, o Java e as configurações em uma imagem que pode ser executada
+em outras máquinas. O Dockerfile usa Maven para gerar o JAR e uma segunda etapa,
+com JRE, para rodar a aplicação com um usuário sem privilégios de administrador.
 
-## Evidências e entrega
-Os itens permanecem pendentes até verificação. Conferir formato exigido, links acessíveis ao professor e identidade do grupo. Não registrar tokens ou credenciais em vídeos, prints ou arquivos.
+A Azure fornece a VM, o disco e a rede para hospedar esse container. Os scripts
+usam Azure CLI para criar e administrar o ambiente. Nesta demonstração, os testes
+rodam dentro da VM por Run Command: o endereço `127.0.0.1:8080` é da VM, e a API
+não está aberta para acesso pela internet.
 
-## Contribuição
-Ver [CONTRIBUTING.md](CONTRIBUTING.md). Equipes, donos nominais, CODEOWNERS, proteção de branches, CI e permissões não foram configurados.
+## Equipe
+
+Turma **2TDSPS**.
+
+| Integrante | RM | Responsabilidade |
+| --- | --- | --- |
+| Alisson Kawan Evangelista Silva | 567598 | Java e .NET |
+| Kenji Fernandes Wakabayashi | 568156 | IoT e Banco de Dados |
+| Erick Ramos Santos | 567837 | DevOps Tools & Cloud Computing |
+| Eduardo Boni dos Santos | 567236 | Mobile Application Development |
+| Marcos Vinicius de Jesus Almeida | 567214 | Documentação e Qualidade de Software |
+
+Nomes e RMs conferidos nos repositórios de
+[banco de dados](https://github.com/Nexo-Challenge/s1-database#equipe-e-responsabilidade)
+e [mobile](https://github.com/Nexo-Challenge/s1-mobile-flutter#equipe-e-responsabilidade).
+
+## Sobre esta versão
+
+A API vem do [s1-java-api](https://github.com/Nexo-Challenge/s1-java-api), no commit
+`b277672b3ed25ac2bd2970fbd6824dc3d38bae86`, sem mudanças no código Java.
+O build usa Java 21 e Maven 3.9.11. As versões e os resultados completos estão na
+[validação](docs/validacao.md).
+
+O banco H2 perde os dados ao reiniciar. A conexão Oracle ainda não foi testada.
+Antes de excluir a infraestrutura, guarde as evidências e grave o vídeo;
+desligar a VM mantém o disco e o IP alocados.

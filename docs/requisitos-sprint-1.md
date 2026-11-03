@@ -1,18 +1,34 @@
-# Requisitos — Sprint 1
+# Checklist — Sprint 1
 
-Disciplina: DevOps Tools & Cloud Computing.
+DevOps Tools & Cloud Computing, conforme o PDF
+`2TDS Agosto - Marinha 2026 - 1º Semestre V2.pdf`, seção DevOps 01–05.
 
-Fonte: `2TDS Agosto - Marinha 2026 - 1º Semestre V2.pdf`, seção DevOps Tools & Cloud Computing 01–05.
+## Parte técnica
 
-Todos os itens estão pendentes. Este checklist não substitui orientações atualizadas do professor/portal.
+- [x] Diagrama com ícones, nomes dos serviços e comunicação entre API, Docker, VM e banco.
+- [x] Dockerfile, imagem construída e container funcionando.
+- [x] VM criada por Azure CLI e API executada no container dentro da Azure.
+- [x] Scripts `.sh` e comandos para reproduzir a implantação.
+- [x] Arquivos publicados em branch pública, com Dockerfile, arquitetura e instruções.
+- [x] README com integrantes, RMs e explicação do uso de Docker e Cloud na solução.
 
-- [ ] Diagrama com aplicação/API, Docker, VM/serviço Azure, banco se aplicável e comunicação; identificar serviços e usar ícones, não somente formas genéricas.
-- [ ] Dockerfile da aplicação/API, imagem gerada e container funcionando.
-- [ ] Provisionar VM Azure utilizando Azure CLI e executar a aplicação em container nessa VM; localhost não atende à demonstração.
-- [ ] Fornecer script .sh e comandos Azure CLI utilizados.
-- [ ] Comprovar o provisionamento, execução/testes e exclusão do grupo de recursos ao término.
-- [ ] Repositório acessível ao professor com Dockerfile, comandos, arquitetura e instruções de reprodução.
-- [ ] README com nomes/RMs e resposta: Como Docker e Cloud Computing podem ser utilizados na solução proposta pelo grupo?
-- [ ] Vídeo de aproximadamente 3 minutos, mínimo 720p, legível, YouTube não listado, áudio explicativo ou legendas, mostrando Azure CLI e container na VM.
-- [ ] PDF final com nome, RM, turma e links GitHub/YouTube.
-- [ ] É permitido reutilizar aplicação Java ou .NET; escolher e acordar com a área responsável antes de adaptar.
+A API Java foi reutilizada do repositório do grupo. Os resultados dos testes estão
+em [validacao.md](validacao.md), e a publicação está no
+[PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2), aberto para revisão.
+
+## Para concluir a entrega
+
+- [ ] Gravar as evidências de criação por CLI, build e execução do container na VM.
+- [ ] Excluir o grupo após a gravação e guardar a confirmação de exclusão.
+- [ ] Publicar vídeo de aproximadamente 3 minutos, mínimo 720p, com áudio explicativo ou legendas, como não listado no YouTube.
+- [ ] Gerar PDF com nomes, RMs, turma e links do GitHub e do vídeo.
+- [ ] Conferir se os links mostram os arquivos completos e abrem para o professor.
+
+O `localhost` dos testes pertence à VM Azure; uma execução apenas no computador
+local não atende ao requisito de hospedagem na nuvem.
+
+## Prazo no documento
+
+O PDF traz 01/11/2026 na seção Entregas e até 02/11/2026 no Cronograma.
+Confirme o horário e a data no portal ou com o professor. O PDF original não está
+versionado neste repositório.
