@@ -1,0 +1,18 @@
+# Demonstração descartável com dados fictícios. Não conecta ao Oracle.
+spring:
+  datasource:
+    url: jdbc:h2:mem:nexo_demo;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      data-locations: file:/opt/nexo/config/demo-data.sql
+  h2:
+    console:
+      enabled: false
