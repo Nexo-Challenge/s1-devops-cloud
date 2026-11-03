@@ -1,75 +1,11 @@
-# NEXO - Docker e VM Azure
+# Evidências reais
+Guardar após executar, sem segredos:
+1. Saída do provisionamento por CLI e VM com estado running.
+2. Construção da imagem e ID/digest.
+3. docker ps mostrando a API dentro da VM.
+4. verify-vm.sh com endpoints HTTP 200 e JSON de demonstração.
+5. Exclusão do grupo e az group exists retornando false.
+6. Link do workflow, se o teste Docker da proposta tiver executado.
 
-Entrega de DevOps Tools & Cloud Computing - Sprint 1, FIAP / Challenge AMAZUL.
-
-A API Java é empacotada em uma imagem Docker e executada em uma VM Ubuntu na Azure.
-O modo demo usa H2 temporário com dados fictícios. O perfil Oracle continua disponível
-para integração posterior com o banco do grupo.
-
-**Estado:** imagem Docker construída e API executada e testada em uma VM Azure real.
-A API Java teve 61 testes aprovados previamente. A verificação remota passou em HTTP e CRUD,
-inclusive após reiniciar o container. Ver [resultados e pendências](docs/validacao.md).
-
-## Começar
-
-- [Docker local](docker/README.md): construir a imagem, iniciar e testar a API.
-- [Azure por CLI](azure/README.md): criar a VM, implantar e verificar o container remoto.
-- [Arquitetura](docs/arquitetura/README.md): fluxo e diagrama com ícones.
-
-![Arquitetura NEXO na Azure](docs/arquitetura/arquitetura.svg)
-
-- [Roteiro do vídeo](docs/roteiro-video.md): aproximadamente 3 minutos.
-- [Evidências](evidence/README.md) e [entrega final](delivery/README.md).
-
-## Como Docker e Cloud Computing podem ser utilizados na solução?
-
-Docker reúne a API Java, seu runtime e sua configuração de execução em uma imagem,
-reduzindo diferenças entre máquinas. O build em múltiplas etapas usa Maven/JDK para
-gerar o JAR e um JRE para executá-lo. O processo roda com usuário sem privilégios.
-
-Cloud Computing fornece a VM e a rede remotas para hospedar o container. Azure CLI
-permite repetir o provisionamento por script e registrar os comandos usados. A API
-pode atender o aplicativo do NEXO quando sua integração estiver implementada.
-Nesta demonstração, os testes são executados dentro da VM via Azure VM Agent;
-o endereço 127.0.0.1 pertence à VM, e a aplicação não fica exposta à internet.
-
-## Reprodutibilidade
-
-Fonte Java fixada em `b277672b3ed25ac2bd2970fbd6824dc3d38bae86` do
-[s1-java-api](https://github.com/Nexo-Challenge/s1-java-api).
-Scripts de infraestrutura versionados neste repositório. Imagens base:
-`maven:3.9.11-eclipse-temurin-21` e `eclipse-temurin:21-jre-jammy`.
-Registrar IDs e digests reais nas evidências. O build Docker usa `-DskipTests`;
-a suíte Java e o teste HTTP/CRUD têm evidências separadas.
-
-## Equipe
-
-| Integrante | RM | Responsabilidade registrada no repositório Java |
-| --- | --- | --- |
-| Alisson Kawan Evangelista Silva | 567598 | Java e .NET |
-| Kenji | 568156 | IoT e Banco de Dados |
-| Erick Ramos Santos | 567837 | DevOps |
-| Eduardo Boni | 567236 | Mobile |
-| Marcos Vinicius de Jesus Almeida | 567214 | Documentação e QA |
-
-Turma informada para esta entrega: 2TDSPS. Conferir nomes completos e cadastro antes do PDF final.
-
-## Fonte e prazo
-Fonte: `2TDS Agosto - Marinha 2026 - 1º Semestre V2.pdf`, seção **DevOps Tools & Cloud Computing 01–05**, fornecido pelo grupo. O PDF original não foi republicado.
-
-O documento diverge: seção Entregas indica **01/11/2026**, Cronograma indica **até 02/11/2026**. Confirmar data e horário no portal/professor; nenhuma das datas foi validada como definitiva. Documentar eventuais instruções atualizadas do portal.
-
-## Documentação de referência
-
-- [Requisitos da Sprint 1](docs/requisitos-sprint-1.md).
-- [Criar VM Linux por Azure CLI](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-cli).
-- [Docker Engine no Ubuntu](https://docs.docker.com/engine/install/ubuntu/).
-- [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Cuidados operacionais
-
-A demonstração H2 perde os dados ao reiniciar; ela não comprova integração Oracle.
-A VM, o disco e o IP podem consumir créditos. Guardar as evidências e gravar o vídeo
-antes de executar o script de exclusão. Nenhuma credencial deve entrar no Git.
-VM e container já foram verificados. A entrega ainda depende de GitHub atualizado, vídeo publicado,
-PDF preenchido e evidência da exclusão.
+Não marcar como concluído sem o resultado. Vídeo aproximado de 3 minutos, 720p mínimo,
+não listado no YouTube, com áudio explicativo ou legendas.
