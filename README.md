@@ -6,16 +6,26 @@ Esta parte do NEXO coloca a API Java do grupo em um container Docker dentro de u
 VM Ubuntu na Azure. A demonstração usa H2 em memória, com dados fictícios.
 A integração com Oracle fica para uma próxima etapa.
 
-## O que está funcionando
+## Entrega da Sprint 1
+
+- **Vídeo da demonstração:** [assistir no YouTube](https://www.youtube.com/watch?v=YWLDkvy1bto).
+- **PDF da entrega:** [NEXO-DevOps-Entrega-Final.pdf](delivery/NEXO-DevOps-Entrega-Final.pdf).
+- **Exclusão da Azure:** [comprovante e registro](evidence/README.md#exclusão-dos-recursos).
+
+A implantação foi testada na Azure em 02 e 03/11/2026. Após a gravação, o grupo
+`rg-nexo-sprint1` foi excluído em **03/11/2026**. A VM não está mais disponível;
+os resultados abaixo registram a execução antes da exclusão.
+
+## O que foi validado
 
 - Imagem Docker construída e container executado na VM Azure.
 - Swagger e endpoints da API respondendo normalmente.
 - Cadastro, consulta, atualização, validação e exclusão testados, inclusive após reiniciar o container.
 - Build Docker e testes HTTP/CRUD aprovados no GitHub Actions.
 
-Os resultados estão em [validação](docs/validacao.md). Os arquivos foram publicados
-no [PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2), aberto para revisão.
-Ainda faltam o vídeo, o PDF final e a exclusão dos recursos após a gravação.
+Os resultados estão em [validação](docs/validacao.md). O código e a documentação
+estão na branch `main`, após a integração do
+[PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2).
 
 ## Como rodar
 
@@ -24,7 +34,7 @@ Ainda faltam o vídeo, o PDF final e a exclusão dos recursos após a gravação
 | Rodar no computador com Docker | [Passo a passo Docker](docker/README.md) |
 | Criar e testar a VM | [Passo a passo Azure](azure/README.md) |
 | Entender a estrutura | [Arquitetura](docs/arquitetura/README.md) |
-| Gravar e entregar | [Roteiro do vídeo](docs/roteiro-video.md) e [entrega](delivery/README.md) |
+| Acessar vídeo e PDF | [Entrega final](delivery/README.md) |
 | Conferir os itens da disciplina | [Checklist da Sprint 1](docs/requisitos-sprint-1.md) |
 
 ![Arquitetura do NEXO na Azure](docs/arquitetura/arquitetura.svg)
@@ -64,5 +74,5 @@ O build usa Java 21 e Maven 3.9.11. As versões e os resultados completos estão
 [validação](docs/validacao.md).
 
 O banco H2 perde os dados ao reiniciar. A conexão Oracle ainda não foi testada.
-Antes de excluir a infraestrutura, guarde as evidências e grave o vídeo;
-desligar a VM mantém o disco e o IP alocados.
+Os recursos da implantação foram excluídos depois da gravação. Os comandos de
+criação permanecem disponíveis para reproduzir o ambiente em outra assinatura.
