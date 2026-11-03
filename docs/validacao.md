@@ -1,43 +1,72 @@
-# Estado de validação
+# Resultados dos testes
 
-## Verificado nesta preparação
-- Fonte Java: commit b277672b3ed25ac2bd2970fbd6824dc3d38bae86 de Nexo-Challenge/s1-java-api.
-- Temurin 21.0.13, Maven Wrapper 3.9.11: 61 testes, zero falhas/erros/ignorados.
-- JAR executável gerado com BUILD SUCCESS.
-- Processo do JAR com H2 temporário: HTTP 200 em /v3/api-docs, /swagger-ui/index.html, /api/aplicacoes e /api/areas.
-- No ambiente da preparação, Mockito exigiu inicialização com javaagent via argLine; não houve alteração no POM.
-- A API Java permanece sem alterações.
+## API Java
 
-- Scripts Bash: sintaxe validada com bash -n; Python: compilação validada.
-- Configuração demo testada no JAR real: seed H2 e endpoints HTTP 200.
-- Teste CRUD demo aprovado: POST 201, GET 200, PUT 200, entrada inválida 400, DELETE 204 e GET após exclusão 404.
-- Teste acima executado sem Docker; não comprova a imagem.
+Fonte: [s1-java-api](https://github.com/Nexo-Challenge/s1-java-api), commit
+`b277672b3ed25ac2bd2970fbd6824dc3d38bae86`, sem alterações no código Java.
 
-## Verificação real na Azure - 02/11/2026, horário de São Paulo
-- Grupo criado por Azure CLI: rg-nexo-sprint1.
-- VM: vm-nexo-sprint1; região eastus; Standard_D2s_v4, 2 vCPU e 8 GiB.
-- Estado observado: VM running.
-- Dockerfile construído na própria VM: BUILD SUCCESS.
-- Imagem: nexo-api:sprint1.
-- ID: sha256:c48834a2740b7e88d0579f27ced987ff721fb90ef770abda2beed859bd862244.
-- Container nexo-api, processo java -jar app.jar, usuário 10001:10001.
-- Porta publicada apenas em 127.0.0.1:8080 da VM; não há acesso público HTTP.
-- Swagger UI, OpenAPI JSON, aplicações e áreas responderam HTTP 200.
-- CRUD remoto: POST 201, GET 200, PUT 200, validação 400, DELETE 204 e GET após exclusão 404.
-- Partida a frio: container reiniciado e testes HTTP/CRUD aprovados novamente, com marcador NEXO_COLD_START_OK.
-- A espera inicial do health check foi ajustada com --retry-all-errors para tolerar resets de conexão enquanto o servidor sobe. Os logs brutos preservam as mensagens transitórias e o resultado final.
-- Desligamento automático habilitado: 03:00 UTC, equivalente a 00:00 de 03/11/2026 em São Paulo. O horário se repete diariamente. Disco/IP não são excluídos por esse desligamento.
-- A imagem foi validada diretamente na VM. A validação por GitHub Actions é complementar; consultar a execução do workflow no PR para seu resultado.
+Com Temurin 21.0.13 e Maven Wrapper 3.9.11, os **61 testes passaram**, sem falhas,
+erros ou testes ignorados. O JAR executável foi gerado com `BUILD SUCCESS`.
+Neste ambiente, o Mockito precisou de `javaagent` via `argLine`; o POM foi mantido.
 
-## A concluir
-- Exclusão do grupo depois de gravar as evidências.
-- Oracle: nenhum acesso realizado; requer schema e credenciais fornecidos ao ambiente.
-- Vídeo, PDF com os links reais e conferência final da entrega.
+O JAR também foi iniciado com H2 para testar os endpoints e os dados de demonstração.
+Os scripts passaram por `bash -n`, e o Python teve a compilação verificada.
+Essas verificações foram separadas do build Docker, que usa `-DskipTests`.
 
-Esta página registra resultados observados; a existência de um script não comprova sua execução.
+## Docker na Azure — 02/11/2026, horário de São Paulo
 
-## Publicação
-Os arquivos de infraestrutura e documentação são publicados em branch para revisão. A implantação por pacote local não depende de merge na main e a API Java permanece no repositório original.
+| Item | Resultado registrado |
+| --- | --- |
+| Grupo | `rg-nexo-sprint1`, criado por Azure CLI |
+| VM | `vm-nexo-sprint1`, Ubuntu, `eastus`, `Standard_D2s_v4`, 2 vCPU e 8 GiB |
+| Estado durante os testes | `VM running` |
+| Build Docker | Concluído na própria VM |
+| Imagem / container | `nexo-api:sprint1` / `nexo-api` |
+| Processo | `java -jar app.jar`, usuário `10001:10001` |
+| Acesso | Somente `127.0.0.1:8080` da VM, via Run Command |
 
-## Evidências
-Saídas brutas foram geradas em ~/NEXO-DevOps/evidence no Cloud Shell e compactadas em ~/NEXO-Azure-evidencias.zip. O download pela interface do Cloud Shell falhou; portanto, esses logs brutos não estão neste pacote. O resumo acima foi conferido na saída visível do terminal. evidence/private é ignorado pelo Git para eventuais backups privados futuros. Não foram incluídas credenciais nem IDs da assinatura no resumo.
+ID da imagem construída:
+
+```text
+sha256:c48834a2740b7e88d0579f27ced987ff721fb90ef770abda2beed859bd862244
+```
+
+Swagger UI, OpenAPI JSON, `/api/aplicacoes` e `/api/areas` retornaram **HTTP 200**.
+O teste CRUD teve os seguintes resultados:
+
+| Operação | HTTP |
+| --- | --- |
+| Criar | 201 |
+| Consultar | 200 |
+| Atualizar | 200 |
+| Enviar entrada inválida | 400 |
+| Excluir | 204 |
+| Consultar após excluir | 404 |
+
+Após reiniciar o container, os testes HTTP e CRUD passaram novamente, com o marcador
+`NEXO_COLD_START_OK`. O health check recebeu `--retry-all-errors` para aguardar a
+inicialização mesmo quando a conexão é reiniciada antes de o servidor ficar pronto.
+
+Também passou o build e teste HTTP/CRUD no GitHub Actions:
+[execução 41564440786](https://github.com/Nexo-Challenge/s1-devops-cloud/actions/runs/41564440786).
+
+## Ambiente e próximos passos
+
+O desligamento automático foi configurado para **03:00 UTC**, equivalente a
+**00h de 03/11/2026 em São Paulo**. O horário se repete diariamente e não exclui
+disco nem IP.
+
+Oracle não foi acessado. A demonstração usa H2 temporário. Ainda faltam o vídeo,
+o PDF com os links e a exclusão do grupo após guardar as evidências.
+Os arquivos estão no [PR #2](https://github.com/Nexo-Challenge/s1-devops-cloud/pull/2),
+aberto para revisão; a implantação foi feita por pacote local.
+
+## Onde ficaram as evidências
+
+[evidence/validacao-azure.txt](../evidence/validacao-azure.txt) contém o resumo da
+saída conferida no terminal. Os logs brutos foram gerados em `~/NEXO-DevOps/evidence`
+e compactados em `~/NEXO-Azure-evidencias.zip` no Cloud Shell, mas o download pela
+interface falhou. Por isso, eles não estão neste pacote.
+
+Backups privados podem ser guardados em `evidence/private`, ignorado pelo Git.
+As evidências publicadas não incluem credenciais nem IDs da assinatura.
