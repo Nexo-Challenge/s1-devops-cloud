@@ -26,7 +26,13 @@ O teste foi executado dentro da VM por Azure VM Agent / Run Command.
 
 Desligamento automático habilitado às 03:00 UTC / 00:00 São Paulo.
 Esse desligamento não exclui disco nem IP.
-Grupo ainda NÃO excluído: aguarda gravação do vídeo e confirmação da limpeza.
+ENCERRAMENTO - 03/11/2026, horário de São Paulo
+Grupo rg-nexo-sprint1 excluído pelo portal Azure após a gravação.
+Portal: "Grupo de recursos rg-nexo-sprint1 excluído".
+Busca pelo nome do grupo: zero resultados.
+Comprovante: exclusao-azure.jpg e PDF em delivery/.
+A tentativa de cleanup.sh no vídeo foi cancelada; a exclusão definitiva veio depois.
+Não foi capturada uma saída posterior de az group exists.
 
 Este arquivo é um resumo da saída conferida no terminal, não um log bruto.
 Os logs brutos foram gerados no Cloud Shell. O download deles pela interface falhou.
